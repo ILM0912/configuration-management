@@ -115,4 +115,14 @@ find "$1" -type f -exec md5sum {} + | sort | uniq -w32 -dD
 
 
 # Задание 8: 
+Написать программу, которая находит все файлы в данном каталоге с расширением, указанным в качестве аргумента и архивирует все эти файлы в архив tar.
+
+код:
+```bash
+#!/bin/bash
+
+find . -name "*.$1" -print0 | tar -czvf archive.tar.gz --null -T -
+```
+скрин: 
+![конфиг 1-8](https://github.com/user-attachments/assets/edc05bef-d5ee-4839-af7f-1eb8db3b3ae3)
 
