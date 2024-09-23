@@ -47,13 +47,9 @@ fim matplotlib.png
 ```
 include "globals.mzn";
 array[1..6] of var 0..9: digits;
-
 constraint all_different(digits);
-
 constraint sum(digits[1..3]) = sum(digits[4..6]);
-
 var int: min_sum = sum(digits[1..3]);
-
 output ["Digits: ", show(digits), "\nSum of first three digits: ", show(min_sum)];
 ```
-![4](https://github.com/user-attachments/assets/859dac6b-eaf4-4c04-908c-1665323c775a)
+![4](https://github.com/user-attachments/assets/4d5e5cf8-0f54-41a0-8209-4d0650875a55)
