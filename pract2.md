@@ -6,9 +6,10 @@
 pip show matplotlib
 git clone https://github.com/matplotlib/matplotlib.git
 ```
-
 ![1](https://github.com/user-attachments/assets/3426c033-9f42-43cc-b347-dffded741ef9)
 ![1-2](https://github.com/user-attachments/assets/2bef146f-f153-4def-badf-e3217e540881)
+
+
 
 ## Задача 2
 Вывести служебную информацию о пакете express (JavaScript). Разобрать основные элементы содержимого файла со служебной информацией из пакета. Как получить пакет без менеджера пакетов, прямо из репозитория?
@@ -17,7 +18,6 @@ git clone https://github.com/matplotlib/matplotlib.git
 npm info express
 git clone https://github.com/expressjs/express.git
 ```
-
 ![2-1](https://github.com/user-attachments/assets/39823d80-e2ca-4282-9dc4-9bc066a0361f)
 ![2-2](https://github.com/user-attachments/assets/ff8d9dbc-3863-4b54-896c-ed9f09fda9f9)
 
@@ -34,7 +34,6 @@ dot -Tpng express.dot -o matplotlib.png
 fim matplotlib.png
 fim matplotlib.png
 ```
-
 ![3-1](https://github.com/user-attachments/assets/646f2729-390f-47d1-ad00-6186aedd4267)
 ![3-2](https://github.com/user-attachments/assets/86294142-4438-4d45-8265-5ee53cdd3f27)
 
@@ -53,3 +52,37 @@ var int: min_sum = sum(digits[1..3]);
 output ["Digits: ", show(digits), "\nSum of first three digits: ", show(min_sum)];
 ```
 ![4](https://github.com/user-attachments/assets/4d5e5cf8-0f54-41a0-8209-4d0650875a55)
+
+
+
+## Задача 5
+Решить на MiniZinc задачу о зависимостях пакетов для рисунка, приведенного ниже.
+### Код:
+```
+  enum PACKAGES = {
+      root, 
+      menu_1_0_0, menu_1_1_0, menu_1_2_0, menu_1_3_0, menu_1_4_0, menu_1_5_0, 
+      dropdown_2_0_0, dropdown_2_1_0, dropdown_2_2_0, dropdown_2_3_0, dropdown_1_8_0,
+      icons_1_0_0, icons_2_0_0
+  };
+  array[PACKAGES] of var 0..1: installed;
+  constraint
+      installed[root] == 1;
+  constraint
+      (installed[root] == 1) -> (installed[menu_1_0_0] == 1 /\ installed[menu_1_5_0] == 1 /\ installed[icons_1_0_0] == 1) /\
+      (installed[menu_1_5_0] == 1) -> (installed[dropdown_2_3_0] == 1 /\ installed[dropdown_2_0_0] == 1) /\
+      (installed[menu_1_4_0] == 1) -> (installed[dropdown_2_3_0] == 1 /\ installed[dropdown_2_0_0] == 1) /\
+      (installed[menu_1_3_0] == 1) -> (installed[dropdown_2_3_0] == 1 /\ installed[dropdown_2_0_0] == 1) /\
+      (installed[menu_1_2_0] == 1) -> (installed[dropdown_2_3_0] == 1 /\ installed[dropdown_2_0_0] == 1) /\
+      (installed[menu_1_1_0] == 1) -> (installed[dropdown_2_3_0] == 1 /\ installed[dropdown_2_0_0] == 1) /\
+      (installed[menu_1_0_0] == 1) -> (installed[dropdown_1_8_0] == 1) /\
+      (installed[dropdown_2_0_0] == 1) -> (installed[icons_2_0_0] == 1) /\
+      (installed[dropdown_2_1_0] == 1) -> (installed[icons_2_0_0] == 1) /\
+      (installed[dropdown_2_2_0] == 1) -> (installed[icons_2_0_0] == 1) /\
+      (installed[dropdown_2_3_0] == 1) -> (installed[icons_2_0_0] == 1);
+  solve minimize sum(installed);
+  output [
+      "Installed packages: ", show(installed)
+  ];
+```
+![5](https://github.com/user-attachments/assets/320c5efe-6003-4b92-8dad-fb27560bf3c1)
