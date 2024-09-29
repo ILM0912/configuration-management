@@ -105,3 +105,42 @@ output ["Installed packages: ", show(installed)];
 ```
 ![5(new)](https://github.com/user-attachments/assets/25d31e65-27cb-44fa-b8fc-82442a6bfd33)
 
+
+## Задача 5
+Решить на MiniZinc задачу о зависимостях пакетов для следующих данных:
+```
+root 1.0.0 зависит от foo ^1.0.0 и target ^2.0.0.
+foo 1.1.0 зависит от left ^1.0.0 и right ^1.0.0.
+foo 1.0.0 не имеет зависимостей.
+left 1.0.0 зависит от shared >=1.0.0.
+right 1.0.0 зависит от shared <2.0.0.
+shared 2.0.0 не имеет зависимостей.
+shared 1.0.0 зависит от target ^1.0.0.
+target 2.0.0 и 1.0.0 не имеют зависимостей.
+```
+### Код:
+```
+enum PACKAGES = {root, foo_1_0_0, foo_1_1_0, target_1_0_0, target_2_0_0, left_1_0_0, right_1_0_0, shared_1_0_0, shared_2_0_0};
+
+array[PACKAGES] of var 0..1: installed;
+constraint installed[root] == 1;
+
+constraint ((installed[root] == 1 -> installed[foo_1_0_0] == 1) \/ 
+    (installed[root] == 1 -> installed[foo_1_1_0] == 1));
+    
+constraint (installed[root] == 1 -> installed[target_2_0_0] == 1);
+
+constraint ((installed[foo_1_1_0] == 1 -> installed[left_1_0_0] == 1) \/ 
+    (installed[foo_1_1_0] == 1 -> installed[right_1_0_0] == 1));
+    
+constraint ((installed[left_1_0_0] == 1 -> installed[shared_1_0_0] == 1) \/ 
+    (installed[left_1_0_0] == 1 -> installed[shared_2_0_0] == 1));
+    
+constraint (installed[right_1_0_0] == 1 -> installed[shared_1_0_0] == 1);
+
+constraint (installed[shared_1_0_0] == 1 -> installed[target_1_0_0] == 1);
+
+solve minimize(sum(installed));
+output ["Installed packages: ", show(installed)];
+```
+![6](https://github.com/user-attachments/assets/4a4f6790-715a-488b-8f46-297410f49591)
