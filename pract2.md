@@ -106,7 +106,7 @@ output ["Installed packages: ", show(installed)];
 ![5(new)](https://github.com/user-attachments/assets/25d31e65-27cb-44fa-b8fc-82442a6bfd33)
 
 
-## Задача 5
+## Задача 6
 Решить на MiniZinc задачу о зависимостях пакетов для следующих данных:
 ```
 root 1.0.0 зависит от foo ^1.0.0 и target ^2.0.0.
