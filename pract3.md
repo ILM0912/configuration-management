@@ -1,12 +1,31 @@
-# Практическое занятие №3. Конфигурационные языки
-
-П.Н. Советов, РТУ МИРЭА
-
-Разобраться, что собой представляют программируемые конфигурационные языки (Jsonnet, Dhall, CUE).
+# Практическое занятие №3.
 
 ## Задача 1
 
 Реализовать на Jsonnet приведенный ниже пример в формате JSON. Использовать в реализации свойство программируемости и принцип DRY.
+### Код:
+```
+local createStudent(age, group, name) = {
+  age: age,
+  group: group,
+  name: name,
+};
+local groups = [
+      "ИКБО-" + (x) + "-23" for x in std.range(1, 24)
+];
+local students = [
+  createStudent(19, 'ИКБО-4-20', 'Иванов И.И.'),
+  createStudent(18, 'ИКБО-5-20', 'Петров П.П.'),
+  createStudent(18, 'ИКБО-5-20', 'Сидоров С.С.'),
+  createStudent(19, 'ИКБО-10-23', 'Красоткин А.А.'),
+];
+{
+  groups: groups,
+  students: students,
+  subject: 'Конфигурационное управление',
+}
+```
+![1](https://github.com/user-attachments/assets/68e1e18c-0687-4add-9616-6efe6546b228)
 
 ## Задача 2
 
