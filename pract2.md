@@ -30,9 +30,9 @@ git clone https://github.com/expressjs/express.git
 echo 'digraph G { node [shape=box]; matplotlib [label="matplotlib"]; numpy [label="numpy"]; pillow [label="pillow"]; cycler [label="cycler"]; matplotlib -> numpy; matplotlib -> pillow; matplotlib -> cycler; }' > matplotlib.dot
 echo 'digraph G { node [shape=box]; express [label="express"]; accepts [label="accepts"]; array_flatten [label="array-flatten"]; content_type [label="content-type"]; express -> accepts; express -> array_flatten; express -> content_type; }' > express.dot
 dot -Tpng matplotlib.dot -o matplotlib.png
-dot -Tpng express.dot -o matplotlib.png
+dot -Tpng express.dot -o express.png
 fim matplotlib.png
-fim matplotlib.png
+fim express.png
 ```
 ![3-1](https://github.com/user-attachments/assets/646f2729-390f-47d1-ad00-6186aedd4267)
 ![3-2](https://github.com/user-attachments/assets/86294142-4438-4d45-8265-5ee53cdd3f27)
