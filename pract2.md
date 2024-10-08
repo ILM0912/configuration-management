@@ -26,16 +26,109 @@ git clone https://github.com/expressjs/express.git
 ## Задача 3
 Сформировать graphviz-код и получить изображения зависимостей matplotlib и express.
 ### Код:
+зависимости matplotlib
 ```
-echo 'digraph G { node [shape=box]; matplotlib [label="matplotlib"]; numpy [label="numpy"]; pillow [label="pillow"]; cycler [label="cycler"]; matplotlib -> numpy; matplotlib -> pillow; matplotlib -> cycler; }' > matplotlib.dot
-echo 'digraph G { node [shape=box]; express [label="express"]; accepts [label="accepts"]; array_flatten [label="array-flatten"]; content_type [label="content-type"]; express -> accepts; express -> array_flatten; express -> content_type; }' > express.dot
+digraph matplotlib {
+    node [shape=box];
+
+    "matplotlib" -> "contourpy";
+    "matplotlib" -> "cycler";
+    "matplotlib" -> "fonttools";
+    "matplotlib" -> "kiwisolver";
+    "matplotlib" -> "numpy";
+    "matplotlib" -> "packaging";
+    "matplotlib" -> "pillow";
+    "matplotlib" -> "pyparsing";
+    "matplotlib" -> "python-dateutil";
+
+    "contourpy" [label="contourpy"];
+    "cycler" [label="cycler"];
+    "fonttools" [label="fonttools"];
+    "kiwisolver" [label="kiwisolver"];
+    "numpy" [label="numpy"];
+    "packaging" [label="packaging"];
+    "pillow" [label="pillow"];
+    "pyparsing" [label="pyparsing"];
+    "python-dateutil" [label="python-dateutil"];
+}
+```
+зависимости express
+```
+digraph express {
+    node [shape=box];
+
+    "express" -> "accepts";
+    "express" -> "array-flatten";
+    "express" -> "body-parser";
+    "express" -> "content-disposition";
+    "express" -> "content-type";
+    "express" -> "cookie";
+    "express" -> "cookie-signature";
+    "express" -> "debug";
+    "express" -> "depd";
+    "express" -> "encodeurl";
+    "express" -> "escape-html";
+    "express" -> "etag";
+    "express" -> "finalhandler";
+    "express" -> "fresh";
+    "express" -> "http-errors";
+    "express" -> "merge-descriptors";
+    "express" -> "methods";
+    "express" -> "on-finished";
+    "express" -> "parseurl";
+    "express" -> "path-to-regexp";
+    "express" -> "proxy-addr";
+    "express" -> "qs";
+    "express" -> "range-parser";
+    "express" -> "safe-buffer";
+    "express" -> "send";
+    "express" -> "serve-static";
+    "express" -> "setprototypeof";
+    "express" -> "statuses";
+    "express" -> "type-is";
+    "express" -> "utils-merge";
+    "express" -> "vary";
+
+    "accepts" [label="accepts"];
+    "array-flatten" [label="array-flatten"];
+    "body-parser" [label="body-parser"];
+    "content-disposition" [label="content-disposition"];
+    "content-type" [label="content-type"];
+    "cookie" [label="cookie"];
+    "cookie-signature" [label="cookie-signature"];
+    "debug" [label="debug"];
+    "depd" [label="depd"];
+    "encodeurl" [label="encodeurl"];
+    "escape-html" [label="escape-html"];
+    "etag" [label="etag"];
+    "finalhandler" [label="finalhandler"];
+    "fresh" [label="fresh"];
+    "http-errors" [label="http-errors"];
+    "merge-descriptors" [label="merge-descriptors"];
+    "methods" [label="methods"];
+    "on-finished" [label="on-finished"];
+    "parseurl" [label="parseurl"];
+    "path-to-regexp" [label="path-to-regexp"];
+    "proxy-addr" [label="proxy-addr"];
+    "qs" [label="qs"];
+    "range-parser" [label="range-parser"];
+    "safe-buffer" [label="safe-buffer"];
+    "send" [label="send"];
+    "serve-static" [label="serve-static"];
+    "setprototypeof" [label="setprototypeof"];
+    "statuses" [label="statuses"];
+    "type-is" [label="type-is"];
+    "utils-merge" [label="utils-merge"];
+    "vary" [label="vary"];
+}
+```
+получение изображений:
+```
 dot -Tpng matplotlib.dot -o matplotlib.png
 dot -Tpng express.dot -o express.png
-fim matplotlib.png
-fim express.png
 ```
-![3-1](https://github.com/user-attachments/assets/646f2729-390f-47d1-ad00-6186aedd4267)
-![3-2](https://github.com/user-attachments/assets/86294142-4438-4d45-8265-5ee53cdd3f27)
+![image](https://github.com/user-attachments/assets/a2a3bc1f-a612-4b3a-a071-90d9ffebb923)
+![image](https://github.com/user-attachments/assets/1d75b1bf-4d3b-4b0c-afbf-7c9ec5e5a80c)
 
 
 
