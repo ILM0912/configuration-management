@@ -234,9 +234,9 @@ constraint (installed[right_1_0_0] == 1 -> installed[shared_1_0_0] == 1);
 constraint (installed[shared_1_0_0] == 1 -> installed[target_1_0_0] == 1);
 
 solve minimize(sum(installed));
-output ["Installed packages: ", show(installed)];
 ```
-![6](https://github.com/user-attachments/assets/4a4f6790-715a-488b-8f46-297410f49591)
+![image](https://github.com/user-attachments/assets/76cc865e-2766-4edd-8311-8b821022427f)
+
 
 ## Задача 7
 Представить задачу о зависимостях пакетов в общей форме. Здесь необходимо действовать аналогично реальному менеджеру пакетов. То есть получить описание пакета, а также его зависимости в виде структуры данных. Например, в виде словаря. В предыдущих задачах зависимости были явно заданы в системе ограничений. Теперь же систему ограничений надо построить автоматически, по метаданным.
