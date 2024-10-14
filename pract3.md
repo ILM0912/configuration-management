@@ -63,11 +63,17 @@ in { groups = groups, students = students, subject = subject }
 101101
 000
 ```
+### Код:
+```
+BNF = '''
+E = 0 | 1 | 0 E | 1 E
+'''
+```
+![3](https://github.com/user-attachments/assets/17ffd637-e29d-44fe-81fb-741351f4e310)
 
 ## Задача 4
 
 Язык правильно расставленных скобок двух видов.
-
 ```
 (({((()))}))
 {}
@@ -75,6 +81,13 @@ in { groups = groups, students = students, subject = subject }
 ()
 {}
 ```
+### Код:
+```
+BNF = '''
+E = () | {} | ( E ) | { E } | E E 
+'''
+```
+![4](https://github.com/user-attachments/assets/23586a70-d231-4dc7-9e8e-a2b9ea85c443)
 
 ## Задача 5
 
