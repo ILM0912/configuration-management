@@ -100,3 +100,10 @@ y & ~(y)
 ~x
 ~((x) & y | (y) | (x)) & x | x | (y & ~y)
 ```
+### Код:
+```
+BNF = '''
+E = x | y | ( E ) | ~( E ) | E & E | E ∨ E
+'''
+```
+![image](https://github.com/user-attachments/assets/82d3c81f-336c-4be7-985f-df5e8af159cb)
