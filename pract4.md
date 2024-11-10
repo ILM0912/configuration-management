@@ -28,3 +28,26 @@ Coder2 добавляет в readme в раздел об авторах свою
 ## Задача 4
 
 Написать программу на Питоне (или другом ЯП), которая выводит список содержимого всех объектов репозитория. Воспользоваться командой "git cat-file -p". Идеальное решение – не использовать иных сторонних команд и библиотек для работы с git.
+### Код: 
+```python
+import subprocess
+
+def get_git_objects(hexsha):
+    result = subprocess.run(['git', 'cat-file', '-p', hexsha], stdout=subprocess.PIPE, stderr=subprocess.PIPE)
+    result_type = subprocess.run(['git', 'cat-file', '-t', hexsha],stdout=subprocess.PIPE,stderr=subprocess.PIPE).stdout.decode()[:-1]
+    if result.returncode == 0:
+        for line in result.stdout.decode().splitlines():
+            if line.startswith('parent') or line.startswith('tree'):
+                next_hexsha = line.split()[1]
+                get_git_objects(next_hexsha)
+            if 'blob' in line:
+                next_hexsha = line.split()[2]
+                get_git_objects(next_hexsha)
+        print(result_type + " - " + hexsha + '\n\n', result.stdout.decode(), "\n", "-"*50)
+    else:
+        print("Error:", result.stderr.decode())
+
+get_git_objects("HEAD")
+```
+### Результат:
+![image](https://github.com/user-attachments/assets/bfd8c688-35f6-461a-a4d1-04412aeb9778)
