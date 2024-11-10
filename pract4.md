@@ -4,13 +4,13 @@
 
 На сайте https://onlywei.github.io/explain-git-with-d3 или http://git-school.github.io/visualizing-git/ (цвета могут отличаться, есть команды undo/redo) с помощью команд эмулятора git получить следующее состояние проекта (сливаем master с first, перебазируем second на master)
 
-### результат:
+### Результат:
 ![image](https://github.com/user-attachments/assets/9725a211-8cef-4718-93d1-b20d2ee0aa66)
 
 ## Задача 2
 
 Создать локальный git-репозиторий. Задать свои имя и почту (далее – coder1). Разместить файл prog.py с какими-нибудь данными. Прислать в текстовом виде диалог с git.
-Результат:
+### Результат:
 ![image](https://github.com/user-attachments/assets/4fb7dad4-7465-4757-9a0a-2fd01a3aac02)
 
 ## Задача 3
@@ -20,6 +20,10 @@
 Coder1 получает актуальные данные с сервера. Добавляет в readme в раздел об авторах свою информацию и обновляет сервер.
 Coder2 добавляет в readme в раздел об авторах свою информацию и решает вопрос с конфликтами.
 Прислать список набранных команд и содержимое git log.
+### Результат:
+![image](https://github.com/user-attachments/assets/3ec453be-784a-4a54-bbaf-c7ca1657c1c5)
+![image](https://github.com/user-attachments/assets/6742930a-3108-4ebe-9cb6-7be7736cf5b3)
+![image](https://github.com/user-attachments/assets/c2848009-9659-4bf6-b357-62c5f4c69e23)
 
 ## Задача 4
 
