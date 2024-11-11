@@ -11,7 +11,7 @@
 
 Создать локальный git-репозиторий. Задать свои имя и почту (далее – coder1). Разместить файл prog.py с какими-нибудь данными. Прислать в текстовом виде диалог с git.
 ### Результат:
-![image](https://github.com/user-attachments/assets/4fb7dad4-7465-4757-9a0a-2fd01a3aac02)
+![image](https://github.com/user-attachments/assets/a6636246-9abe-4ae3-8a43-beeb3e1e2951)
 
 ## Задача 3
 
