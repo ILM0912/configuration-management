@@ -31,23 +31,28 @@ Coder2 добавляет в readme в раздел об авторах свою
 ### Код: 
 ```python
 import subprocess
-
-def get_git_objects(hexsha):
-    result = subprocess.run(['git', 'cat-file', '-p', hexsha], stdout=subprocess.PIPE, stderr=subprocess.PIPE)
-    result_type = subprocess.run(['git', 'cat-file', '-t', hexsha],stdout=subprocess.PIPE,stderr=subprocess.PIPE).stdout.decode()[:-1]
-    if result.returncode == 0:
-        for line in result.stdout.decode().splitlines():
-            if line.startswith('parent') or line.startswith('tree'):
-                next_hexsha = line.split()[1]
-                get_git_objects(next_hexsha)
-            if 'blob' in line:
-                next_hexsha = line.split()[2]
-                get_git_objects(next_hexsha)
-        print(result_type + " - " + hexsha + '\n\n', result.stdout.decode(), "\n", "-"*50)
-    else:
-        print("Error:", result.stderr.decode())
-
-get_git_objects("HEAD")
+import os
+def get_git_objects(repo_path='.'):
+    if not(os.path.isdir(os.path.join(repo_path, '.git'))):
+        print("Это не гит репозиторий")
+    for folder in os.listdir(os.path.join(repo_path, '.git', 'objects')):
+        if folder in ['info', 'pack']:
+            continue
+        for file in os.listdir(os.path.join(repo_path, '.git', 'objects', folder)):
+            hexsha = folder+file
+            print(f"hexsha - {hexsha}\n")
+            result = subprocess.run(
+                ['git', 'cat-file', '-p', hexsha],
+                cwd=repo_path,
+                stdout=subprocess.PIPE,
+                stderr=subprocess.PIPE)
+            if result.returncode == 0:
+                print(result.stdout.decode(errors='replace'))
+            else:
+                print(f"Ошибка при обработке объекта: {hexsha}\n{result.stderr}")
+            print('\n' + '-' * 100 + '\n')
+get_git_objects()
 ```
 ### Результат:
-![image](https://github.com/user-attachments/assets/bfd8c688-35f6-461a-a4d1-04412aeb9778)
+![image](https://github.com/user-attachments/assets/8a275d78-0211-471b-8a2f-1d512ce64ba5)
+
